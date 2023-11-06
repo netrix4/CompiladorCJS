@@ -30,17 +30,11 @@ function onSelectedFileChanged() {
         let banderaNoEncontrado = true; 
 
         everyWordInFile = originalFileString.split(findWordsRegex)
-        console.log(everyWordInFile);
         analizedStrings = [];
 
         everyWordInFile.forEach((itemWordInFile) => {
-            // console.log(1)
-
             diccionario.forEach((ItemDiccionario) => {
-                // console.log(2)
-
                 ItemDiccionario.lista.forEach((objPalabra) => {
-                    // console.log(3);
                     if (itemWordInFile.includes(objPalabra.lexema)) {
                         analizedStrings.push([itemWordInFile, objPalabra.categoria]);
                         banderaNoEncontrado = false
@@ -48,15 +42,13 @@ function onSelectedFileChanged() {
                 });
             });
             if (banderaNoEncontrado) {
-                analizedStrings.push([itemWordInFile, ' - ID']);
+                analizedStrings.push([itemWordInFile, 'ID']);
             }
             banderaNoEncontrado = true
         });
-
-        // console.log(diccionario.diccionario)
-
+    
         filtredString = `Coicidencias encontradas: ${analizedStrings.length}\n`;
-
+        // console.log(analizedStrings)
         analizedStrings.forEach((palabraAnalizada) => {
             const temp = `${palabraAnalizada[0]} - ${palabraAnalizada[1]}`;
             filtredString = filtredString.concat(temp, '\n')
@@ -74,7 +66,7 @@ function onSelectedFileChanged() {
 
     }
     function onDownload() {
-        console.log(filtredString);
+        console.log('Archivo de salida listo para descargar');
         const archivoBlob = new Blob([filtredString], { type: 'text/plain' });
 
         const archivoURL = URL.createObjectURL(archivoBlob);
