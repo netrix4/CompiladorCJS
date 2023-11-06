@@ -1,6 +1,7 @@
 console.log("Reconocer palabras reservadas y operadores");
 
-import * as _diccCadenas from "../resources/DiccionarioCadenas.js";
+// import * as diccionario from "../resources/DiccionarioCadenas.js";
+import {diccionario} from "../resources/DiccionarioCadenas.js";
 
 const selectedFile = document.getElementById('selectedFile')
 const cardContent = document.getElementById('cardContent')
@@ -26,27 +27,39 @@ function onSelectedFileChanged() {
 
     fileReader.onload = () => {
         originalFileString = fileReader.result
+        let banderaNoEncontrado = true; 
 
         everyWordInFile = originalFileString.split(findWordsRegex)
         console.log(everyWordInFile);
         analizedStrings = [];
 
-        everyWordInFile.forEach((item) => {
-            const isReservedWord = Object.values(_diccCadenas.diccionario[6]).includes(item);
-            analizedStrings.push({ item, isReservedWord });
+        everyWordInFile.forEach((itemWordInFile) => {
+            // console.log(1)
+
+            diccionario.forEach((ItemDiccionario) => {
+                // console.log(2)
+
+                ItemDiccionario.lista.forEach((objPalabra) => {
+                    // console.log(3);
+                    if (itemWordInFile.includes(objPalabra.lexema)) {
+                        analizedStrings.push([itemWordInFile, objPalabra.categoria]);
+                        banderaNoEncontrado = false
+                    }
+                });
+            });
+            if (banderaNoEncontrado) {
+                analizedStrings.push([itemWordInFile, ' - ID']);
+            }
+            banderaNoEncontrado = true
         });
 
-        filtredString = 'Coicidencias encontradas: ';
+        // console.log(diccionario.diccionario)
 
-        analizedStrings.forEach((item) => {
-            temp = item.isReservedWord? ' - PR\n': ' - ID\n';
-            filtredString = filtredString.concat(item.item, temp)
+        filtredString = `Coicidencias encontradas: ${analizedStrings.length}\n`;
 
-            // if (item.isReservedWord) {
-            //     filtredString = filtredString.concat(item.item + ' - PR\n');   
-            // } else {
-            //     filtredString = filtredString.concat(item.item + ' - ID\n');
-            // }
+        analizedStrings.forEach((palabraAnalizada) => {
+            const temp = `${palabraAnalizada[0]} - ${palabraAnalizada[1]}`;
+            filtredString = filtredString.concat(temp, '\n')
         });
 
         originalFileString = 'Texto original: \n' + originalFileString

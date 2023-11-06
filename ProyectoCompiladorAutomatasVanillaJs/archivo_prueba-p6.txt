@@ -1,6 +1,6 @@
 main a , con como hacer palabras
 total
-varios + int nada
+varios - int nada
 palabra
 Void
 int | TEST
@@ -10,3 +10,6 @@ mexico
 a
 b
 total
+{
+}
+{}

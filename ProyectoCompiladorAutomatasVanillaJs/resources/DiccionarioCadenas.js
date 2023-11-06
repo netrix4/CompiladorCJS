@@ -208,6 +208,11 @@ const palabrasReservadas = [
     },
     {
         id: crypto.randomUUID(),
+        lexema: 'main',
+        categoria: 'PR'
+    },
+    {
+        id: crypto.randomUUID(),
         lexema: 'while',
         categoria: 'PR'
     }
@@ -327,11 +332,11 @@ const operadoresAgrupacion = [
 ]
 
 export const diccionario = [
-    {
-        id: crypto.randomUUID(),
-        nombre: 'numeros',
-        lista: numeros
-    },
+    // {
+    //     id: crypto.randomUUID(),
+    //     nombre: 'numeros',
+    //     lista: numeros
+    // },
     {
         id: crypto.randomUUID(),
         nombre: 'PalabrasReservadas',
@@ -356,39 +361,39 @@ export const diccionario = [
         id: crypto.randomUUID(),
         nombre: 'operadoresAgrupacion',
         lista: operadoresAgrupacion
-    },
-    {
-        1: "auto",
-        2: "break",
-        3: "case",
-        4: "char",
-        5: "const",
-        6: "continue",
-        7: "default",
-        8: "do",
-        9: "double",
-        10: "else",
-        11: "enum",
-        12: "extern",
-        13: "float",
-        14: "for",
-        15: "goto",
-        16: "if",
-        17: "int",
-        18: "long",
-        19: "register",
-        20: "return",
-        21: "short",
-        22: "signed",
-        23: "sizeof",
-        24: "static",
-        25: "struct",
-        26: "switch",
-        27: "typedef",
-        28: "union",
-        29: "unsigned",
-        30: "void",
-        31: "volatile",
-        32: "while"
     }
+    // {
+    //     1: "auto",
+    //     2: "break",
+    //     3: "case",
+    //     4: "char",
+    //     5: "const",
+    //     6: "continue",
+    //     7: "default",
+    //     8: "do",
+    //     9: "double",
+    //     10: "else",
+    //     11: "enum",
+    //     12: "extern",
+    //     13: "float",
+    //     14: "for",
+    //     15: "goto",
+    //     16: "if",
+    //     17: "int",
+    //     18: "long",
+    //     19: "register",
+    //     20: "return",
+    //     21: "short",
+    //     22: "signed",
+    //     23: "sizeof",
+    //     24: "static",
+    //     25: "struct",
+    //     26: "switch",
+    //     27: "typedef",
+    //     28: "union",
+    //     29: "unsigned",
+    //     30: "void",
+    //     31: "volatile",
+    //     32: "while"
+    // }
 ]
