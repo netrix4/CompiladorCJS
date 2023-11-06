@@ -1,0 +1,4 @@
+Este es un texto corto para demostración legible. ¡Qué emoción!. Así es como separamos letras de la a la z sin caracteres especiales.
+JavaScript es un lenguaje de programación. 1'200 es un número.
+
+Este es un segundo parrafo: {},[],¡!,¿?,ñ, última palabra del archivo.

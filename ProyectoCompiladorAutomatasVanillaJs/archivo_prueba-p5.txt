@@ -1,0 +1,12 @@
+main a , con como hacer palabras
+total
+varios
+palabra
+Void
+int
+double
+doble
+mexico
+a
+b
+total
