@@ -46,7 +46,8 @@ function compileInputText() {
     everyWordInFile.forEach((itemWordInFile) => {
         diccionario.forEach((ItemDiccionario) => {
             ItemDiccionario.lista.forEach((objPalabra) => {
-                if (itemWordInFile.includes(objPalabra.lexema)) {
+                // if (itemWordInFile.includes(objPalabra.lexema)) {
+                if (itemWordInFile === objPalabra.lexema) {
                     analizedStrings.push([itemWordInFile, objPalabra.categoria]);
                     banderaNoEncontrado = false
                 }
