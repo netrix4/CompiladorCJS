@@ -332,11 +332,11 @@ const operadoresAgrupacion = [
 ]
 
 export const diccionario = [
-    // {
-    //     id: crypto.randomUUID(),
-    //     nombre: 'numeros',
-    //     lista: numeros
-    // },
+    {
+        id: crypto.randomUUID(),
+        nombre: 'numeros',
+        lista: numeros
+    },
     {
         id: crypto.randomUUID(),
         nombre: 'PalabrasReservadas',

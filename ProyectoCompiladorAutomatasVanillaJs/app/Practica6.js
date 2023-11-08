@@ -15,7 +15,7 @@ function onSelectedFileChanged() {
     downloadButton.addEventListener('click', onDownload)
     
     const fileReader = new FileReader();
-    const findWordsRegex = /\s+/gm
+    const findWordsRegex = /[0-9]|(\w)+|[\|&!]|((>=)|(<=)|(==))|[><]|[=*/%+\-]|[\(\){}\[\]]|[;]/gm
 
     let originalFileString;
     let everyWordInFile;
@@ -29,7 +29,7 @@ function onSelectedFileChanged() {
         originalFileString = fileReader.result
         let banderaNoEncontrado = true; 
 
-        everyWordInFile = originalFileString.split(findWordsRegex)
+        everyWordInFile = originalFileString.match(findWordsRegex)
         analizedStrings = [];
 
         everyWordInFile.forEach((itemWordInFile) => {
@@ -55,7 +55,7 @@ function onSelectedFileChanged() {
         });
 
         originalFileString = 'Texto original: \n' + originalFileString
-
+        console.log(everyWordInFile);
         fileContent.textContent = originalFileString
         filteredFileContent.textContent = filtredString
         downloadButton.textContent = 'Descargar'
