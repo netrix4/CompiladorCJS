@@ -3,18 +3,20 @@ console.log("Editor/Compilador Online");
 // import * as diccionario from "../resources/DiccionarioCadenas.js";
 import {diccionario} from "../resources/DiccionarioCadenas.js";
 
-const selectedFile = document.getElementById('selectedFile')
 const cardContent = document.getElementById('cardContent')
 
+const selectedFile = document.getElementById('selectedFile')
 selectedFile.addEventListener('change', onSelectedFileChanged)
-const filteredFileContent = document.createElement('textarea')
-filteredFileContent.setAttribute('id', 'taFilteredFileContent')
-const downloadButton = document.createElement('button')
+
+const filteredFileContent = document.getElementById('inputText')
+// filteredFileContent.setAttribute('id', 'taFilteredFileContent')
+
+const downloadButton = document.getElementById('download')
 downloadButton.addEventListener('click', onDownload)
 
 downloadButton.textContent = 'Descargar'
-cardContent.appendChild(filteredFileContent)
-cardContent.appendChild(downloadButton)
+// cardContent.appendChild(filteredFileContent)
+// cardContent.appendChild(downloadButton)
 
 let fileReader;
 const findWordsRegex = /[0-9]|(\w)+|[\|&!]|((>=)|(<=)|(==))|[><]|[=*/%+\-]|[\(\){}\[\]]|[;]/gm
@@ -31,15 +33,14 @@ function onSelectedFileChanged() {
     console.log('File readed: ', selectedFile.files[0].name)
     fileReader.onload = () => {
         originalFileString = fileReader.result
-        filteredFileContent.textContent = originalFileString
+        filteredFileContent.value = originalFileString
     }
 }
 function compileInputText() {
-    const temp = document.getElementById('taFilteredFileContent').value
-    console.log(temp.value);
+    const textAreaValue = document.getElementById('inputText').value
     let banderaNoEncontrado = true; 
 
-    everyWordInFile = temp.match(findWordsRegex)
+    everyWordInFile = textAreaValue.match(findWordsRegex)
     analizedStrings = [];
 
     everyWordInFile.forEach((itemWordInFile) => {
@@ -75,7 +76,7 @@ function onDownload() {
     
     const enlaceDescarga = document.createElement('a');
     enlaceDescarga.href = archivoURL;
-    enlaceDescarga.download = 'output.txt';
+    enlaceDescarga.download = `output_${selectedFile.files[0].name}`;
     enlaceDescarga.click();
     URL.revokeObjectURL(archivoURL);
 }
