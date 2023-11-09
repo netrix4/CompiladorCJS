@@ -21,13 +21,17 @@ function onSelectedFileChanged() {
     }
 }
 function compileInputText() {
-    const findWordsRegex = /[0-9]|(\w)+|[\|&!]|((>=)|(<=)|(==))|[><]|[=*/%+\-]|[\(\){}\[\]]|[;]/gm
+    const findCommentsRegex = /(\/\/.+)|(\/\*[\s\S]+?\*\/)/gm    // Encontrar comentarios
+    const stringWithoutComments = filteredFileContent.value.replace(findCommentsRegex, '').toString()
+    // console.log(typeof stringWithoutComments, stringWithoutComments);
+    
+    const findWordsRegex = /[0-9]|(\w)+|[\|&!]|((>=)|(<=)|(==))|[><]|[=*/%+\-]|[,\(\){}\[\]]|[;]/gm
+    const everyWordInFile = stringWithoutComments.match(findWordsRegex)
+    // console.log(everyWordInFile);
 
-    const textAreaValue = document.getElementById('inputText').value
-    let banderaNoEncontrado = true; 
 
-    const everyWordInFile = textAreaValue.match(findWordsRegex)
     const analizedStrings = [];
+    let banderaNoEncontrado = true; 
 
     everyWordInFile.forEach((itemWordInFile) => {
         diccionario.forEach((ItemDiccionario) => {
@@ -63,7 +67,12 @@ function onDownload() {
     
     const enlaceDescarga = document.createElement('a');
     enlaceDescarga.href = archivoURL;
-    enlaceDescarga.download = `output_${selectedFile.files[0].name}`;
+    if (selectedFile.files[0]) {
+        enlaceDescarga.download = `output_${selectedFile.files[0].name}`;
+        
+    } else {
+        enlaceDescarga.download = `outputFromBlank.txt`;        
+    }
     enlaceDescarga.click();
     URL.revokeObjectURL(archivoURL);
 }

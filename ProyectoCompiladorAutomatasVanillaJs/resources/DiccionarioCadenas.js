@@ -53,6 +53,16 @@ const numeros = [
 const palabrasReservadas = [
     {
         id: crypto.randomUUID(),
+        lexema: 'scanf',
+        categoria: 'PR'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: 'printf',
+        categoria: 'PR'
+    },
+    {
+        id: crypto.randomUUID(),
         lexema: 'auto',
         categoria: 'PR'
     },
