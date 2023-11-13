@@ -48,19 +48,59 @@ const numeros = [
         id: crypto.randomUUID(),
         lexema: '9',
         categoria: 'NUM'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: '10',
+        categoria: 'NUM'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: '11',
+        categoria: 'NUM'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: '12',
+        categoria: 'NUM'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: '13',
+        categoria: 'NUM'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: '14',
+        categoria: 'NUM'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: '15',
+        categoria: 'NUM'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: '16',
+        categoria: 'NUM'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: '17',
+        categoria: 'NUM'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: '18',
+        categoria: 'NUM'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: '19',
+        categoria: 'NUM'
     }
 ]
 const palabrasReservadas = [
-    {
-        id: crypto.randomUUID(),
-        lexema: 'scanf',
-        categoria: 'PR'
-    },
-    {
-        id: crypto.randomUUID(),
-        lexema: 'printf',
-        categoria: 'PR'
-    },
     {
         id: crypto.randomUUID(),
         lexema: 'auto',
@@ -225,7 +265,57 @@ const palabrasReservadas = [
         id: crypto.randomUUID(),
         lexema: 'while',
         categoria: 'PR'
-    }
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: 'include',
+        categoria: 'PR'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: 'printf',
+        categoria: 'PR'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: 'scanf',
+        categoria: 'PR'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: 'fprintf',
+        categoria: 'PR'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: 'fscanf',
+        categoria: 'PR'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: 'sprintf',
+        categoria: 'PR'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: 'fseek',
+        categoria: 'PR'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: 'fopen',
+        categoria: 'PR'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: 'fclose',
+        categoria: 'PR'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: 'getch',
+        categoria: 'PR'
+    },
 ]
 const operadoresLogicos = [
     {
@@ -257,29 +347,39 @@ const operadoresRelacionales = [
     },
     {
         id: crypto.randomUUID(),
-        lexema: '>=',
-        categoria: 'OR'
-    },
-    {
-        id: crypto.randomUUID(),
-        lexema: '<=',
-        categoria: 'OR'
-    },
-    {
-        id: crypto.randomUUID(),
-        lexema: '==',
-        categoria: 'OR'
-    },
-    {
-        id: crypto.randomUUID(),
-        lexema: '!=',
+        lexema: '=',
         categoria: 'OR'
     }
+    // {
+    //     id: crypto.randomUUID(),
+    //     lexema: '>=',
+    //     categoria: 'OR'
+    // },
+    // {
+    //     id: crypto.randomUUID(),
+    //     lexema: '<=',
+    //     categoria: 'OR'
+    // },
+    // {
+    //     id: crypto.randomUUID(),
+    //     lexema: '==',
+    //     categoria: 'OR'
+    // },
+    // {
+    //     id: crypto.randomUUID(),
+    //     lexema: '!=',
+    //     categoria: 'OR'
+    // },
 ]
 const operadoresMatematicos = [
     {
         id: crypto.randomUUID(),
-        lexema: '=',
+        lexema: '+',
+        categoria: 'OM'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: '-',
         categoria: 'OM'
     },
     {
@@ -292,19 +392,14 @@ const operadoresMatematicos = [
         lexema: '/',
         categoria: 'OM'
     },
+    // {
+    //     id: crypto.randomUUID(),
+    //     lexema: '=',
+    //     categoria: 'OM'
+    // },
     {
         id: crypto.randomUUID(),
         lexema: '%',
-        categoria: 'OM'
-    },
-    {
-        id: crypto.randomUUID(),
-        lexema: '+',
-        categoria: 'OM'
-    },
-    {
-        id: crypto.randomUUID(),
-        lexema: '-',
         categoria: 'OM'
     }
 ]
@@ -340,13 +435,32 @@ const operadoresAgrupacion = [
         categoria: 'OA'
     }
 ]
-
-export const diccionario = [
+const operadoresEspaciamiento = [
     {
         id: crypto.randomUUID(),
-        nombre: 'numeros',
-        lista: numeros
+        lexema: ',',
+        categoria: 'OE'
     },
+    {
+        id: crypto.randomUUID(),
+        lexema: '.',
+        categoria: 'OE'
+    },
+    {
+        id: crypto.randomUUID(),
+        lexema: ':',
+        categoria: 'OE'
+    }
+]
+const semiColon = [
+    {
+        id: crypto.randomUUID(),
+        lexema: ';',
+        categoria: 'SC'
+    }
+]
+
+export const diccionario = [
     {
         id: crypto.randomUUID(),
         nombre: 'PalabrasReservadas',
@@ -371,39 +485,20 @@ export const diccionario = [
         id: crypto.randomUUID(),
         nombre: 'operadoresAgrupacion',
         lista: operadoresAgrupacion
-    }
+    },
+    {
+        id: crypto.randomUUID(),
+        nombre: 'operadoresEspaciamiento',
+        lista: operadoresEspaciamiento
+    },
     // {
-    //     1: "auto",
-    //     2: "break",
-    //     3: "case",
-    //     4: "char",
-    //     5: "const",
-    //     6: "continue",
-    //     7: "default",
-    //     8: "do",
-    //     9: "double",
-    //     10: "else",
-    //     11: "enum",
-    //     12: "extern",
-    //     13: "float",
-    //     14: "for",
-    //     15: "goto",
-    //     16: "if",
-    //     17: "int",
-    //     18: "long",
-    //     19: "register",
-    //     20: "return",
-    //     21: "short",
-    //     22: "signed",
-    //     23: "sizeof",
-    //     24: "static",
-    //     25: "struct",
-    //     26: "switch",
-    //     27: "typedef",
-    //     28: "union",
-    //     29: "unsigned",
-    //     30: "void",
-    //     31: "volatile",
-    //     32: "while"
-    // }
+    //     id: crypto.randomUUID(),
+    //     nombre: 'numeros',
+    //     lista: numeros
+    // },
+    {
+        id: crypto.randomUUID(),
+        nombre: 'semiColon',
+        lista: semiColon
+    }
 ]
