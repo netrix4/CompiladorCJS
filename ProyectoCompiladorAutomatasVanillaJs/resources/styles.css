@@ -49,7 +49,8 @@ body{
 }
 .card-element-content > p {
 	max-width: 100%;
-	justify-content: center;
+	align-content: center;
+	/* justify-content: center; */
 }
 .card-element-content > textarea {
 	width: 100%;

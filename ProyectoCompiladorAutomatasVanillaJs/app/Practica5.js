@@ -28,7 +28,6 @@ function onSelectedFileChanged() {
         originalFileString = fileReader.result
 
         everyWordInFile = originalFileString.split(findWordsRegex)
-        console.log(everyWordInFile);
         analizedStrings = [];
 
         everyWordInFile.forEach((item) => {
@@ -39,11 +38,8 @@ function onSelectedFileChanged() {
         filtredString = 'Coicidencias encontradas: ';
 
         analizedStrings.forEach((item) => {
-            if (item.isReservedWord) {
-                filtredString = filtredString.concat(item.item + ' - PR\n');   
-            } else {
-                filtredString = filtredString.concat(item.item + ' - ID\n');
-            }
+            const temp = item.isReservedWord? ' - PR\n': ' - ID\n';
+            filtredString = filtredString.concat(item.item, temp)
         });
 
         originalFileString = 'Texto original: \n' + originalFileString

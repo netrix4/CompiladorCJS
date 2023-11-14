@@ -1,12 +1,15 @@
-main a , con como hacer palabras
-total
-varios + int nada
-palabra
-Void
-int | TEST
-double & int
-doble
-mexico
-a
-b
-total
+int main() {    
+
+    int number1, number2, sum;
+
+    // calculate the sum
+    sum = number1 + number2;    
+	 if(a>=b){
+	 <=
+	 	a < c
+	 }
+	 if (t!=a){
+		a = 100+200;
+	 }
+    return 0;
+}

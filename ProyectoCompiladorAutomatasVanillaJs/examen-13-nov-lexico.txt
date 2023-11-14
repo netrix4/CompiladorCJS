@@ -1,0 +1,21 @@
+/* Envío de un array a una función. */
+
+	void visualizar(int []); /* prototipo */
+	main() /* rellenamos y visualizamos */
+	{
+		int array[25],i;
+		for (i=0;i<25;i++)
+		{
+			printf("Elemento nº %d",i+1);
+			scanf("%d",&array[i]);
+		}
+		visualizar(&array[0]);
+	}
+
+	void visualizar(int array[]) /* desarrollo */
+	{
+		int i;
+		for (i=0;i<25;i++) printf("%d",array[i]);
+	} 
+
+  
