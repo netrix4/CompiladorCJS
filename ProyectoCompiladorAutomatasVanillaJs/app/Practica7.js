@@ -22,11 +22,16 @@ function onSelectedFileChanged() {
 function compileInputText() {
     const findNumbersItselfs = /\b[0-9]+\b/gm
     const findCommentsRegex = /(\/\/.+)|(\/\*[\s\S]+?\*\/)/gm       // Encontrar comentarios
-    const findWordsRegex = /(\.|,|\;|\:|=|(\{|\}|\[|\]|\(|\))|(\+|-|\*|\/|%)|(!|>|<|&|\|)|("[a-zA-Z ,!]+")|[a-zA-Z_]+([0-9]+)?|[0-9]+)/gm  // EDW
-    // const findWordsRegex = /(\w)+|[\|&!]+|[><]|[=*/%+\-]|[:\.,\(\){}\[\]]|[;]|[0-9]+/gm
+    // const findWordsRegex = /(\.|,|\;|\:|=|(\{|\}|\[|\]|\(|\))|(\+|-|\*|\/|%)|(!|>|<|&|\|)|("[a-zA-Z ,!]+")|[a-zA-Z_]+([0-9]+)?|[0-9]+)/gm  
+    const findWordsRegex = /"('\\'"|.)*?"|(\.|,|\;|\:|=|(\{|\}|\[|\]|\(|\))|(\+|-|\*|\/|%)|(!|>|<|&|\|)|("[a-zA-Z ,!]+")|[a-zA-Z_]+([0-9]+)?|[0-9]+)/gm
+    const findStringsRegex = /"('\\'"|.)*?"/gm
 
     const stringWithoutComments = filteredFileContent.value.replace(findCommentsRegex, '').toString()
     const everyWordInFile = stringWithoutComments.match(findWordsRegex)
+
+    const everyStringInFile = stringWithoutComments.match(findStringsRegex)
+    console.log( everyStringInFile)
+    console.log(everyWordInFile)
 
     const analizedStrings = [];
     const analizedGroupsStrings = [];
@@ -42,6 +47,11 @@ function compileInputText() {
                 }
             });
         });
+        if (itemWordInFile.match(findStringsRegex)) {
+            analizedStrings.push(itemWordInFile);
+            analizedGroupsStrings.push('STR');
+            banderaNoEncontrado = false
+        }
         if (banderaNoEncontrado) {
             if (itemWordInFile.match(findNumbersItselfs)) {
                 // analizedStrings.push([itemWordInFile, 'NUM']);
@@ -68,7 +78,10 @@ function compileInputText() {
     const opEspaciamientoCount = analizedGroupsStrings.filter((item) => item === 'OE').length
     const semiColonCount = analizedGroupsStrings.filter((item) => item === 'SC').length
     const numerosCount = analizedGroupsStrings.filter((item) => item === 'NUM').length
+    const stringCount = analizedGroupsStrings.filter((item) => item === 'STR').length
     
+    console.log(stringCount, analizedGroupsStrings)
+
     let filtredString = '';
     let contador = 0;
 
@@ -79,16 +92,16 @@ function compileInputText() {
     }
 
     const IDcount = analizedStrings.length - (numerosCount+reservadasCount+opLogicosCount+opRelacionalCount
-        +opMatematicosCount+opAgrupacionCount+opEspaciamientoCount+semiColonCount)
+        +opMatematicosCount+opAgrupacionCount+opEspaciamientoCount+semiColonCount+stringCount)
 
     const totalCount = numerosCount+reservadasCount+opLogicosCount+ opRelacionalCount+opMatematicosCount+
-                        opAgrupacionCount+opEspaciamientoCount+semiColonCount+IDcount
+                        opAgrupacionCount+opEspaciamientoCount+semiColonCount+IDcount+stringCount
 
     const everyCount = [['Palabras Reservadas', 'Operadores Lógicos', 'Operadores Relacionales', 'Operadores Matematicos', 
-                        'Operadores de Agrupación', 'Operadores de Espaciamientos', 'Punto y Comas', 'Numeros', 'Palabras No Reservadas', 
+                        'Operadores de Agrupación', 'Operadores de Espaciamientos', 'Punto y Comas', 'Numeros', 'Literales' ,'Palabras No Reservadas', 
                         'Total de incidencias'],
                         [reservadasCount, opLogicosCount, opRelacionalCount, opMatematicosCount, opAgrupacionCount, opEspaciamientoCount, 
-                        semiColonCount, numerosCount, IDcount, totalCount]]
+                        semiColonCount, numerosCount, stringCount, IDcount, totalCount]]
     return {filtredString, everyCount}
 }
 
