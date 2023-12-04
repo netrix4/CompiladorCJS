@@ -38,10 +38,10 @@ const HomePage = () => {
         <h2>Analizador Sintáctico</h2>
       </div>
       <div className='card-element-content' id="cardContent">
-        <p className='text-center' htmlFor="inputAutom">Ingresa tus operaciones aritméticas y haz click en el botón para conocer el resultado</p>
+        <p htmlFor="inputAutom">Ingresa tus operaciones aritméticas y haz click en el botón para conocer el resultado</p>
         <textarea id="inputText" value={inputUser} onChange={onTextInputChange}></textarea>
         <button id="compile" onClick={onCompileClick}>Compilar</button>
-        <p>{results}</p>
+        <p >{results}</p>
       </div>
     </div>
   )
