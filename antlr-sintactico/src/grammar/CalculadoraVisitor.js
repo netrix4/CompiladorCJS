@@ -1,4 +1,4 @@
-// Generated from ./grammar/Calculadora.g4 by ANTLR 4.13.1
+// Generated from grammar/Calculadora.g4 by ANTLR 4.13.1
 // jshint ignore: start
 import antlr4 from 'antlr4';
 
@@ -8,7 +8,6 @@ export default class CalculadoraVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by CalculadoraParser#file.
 	visitFile(ctx) {
-		console.log('Iniciando calculos xd');
 	  return this.visitChildren(ctx);
 	}
 
@@ -21,8 +20,6 @@ export default class CalculadoraVisitor extends antlr4.tree.ParseTreeVisitor {
 
 	// Visit a parse tree produced by CalculadoraParser#number.
 	visitNumber(ctx) {
-		console.log('Se econtró un número')
-		console.log(ctx.NUMBER);
 	  return this.visitChildren(ctx);
 	}
 
