@@ -27,3 +27,35 @@ asdasdas
 */
 99+1
 
+
+
+
+
+
+
+
+
+
+
+
+
+/**Este es un ejemplo de comentario**/
+1+1
+// Expresión matemática simple usando paréntesis //
+(1+1)+(2*2)
+//
+((1+1)+(2*2))
+2-((1+1)+(2*2))
+/**Este no se evalúa**/
+//(1+1)
+
+(2-2)-((1+1)+(2*2))
+((2-2)-((1+1)+(2*2)))
+1+(2+(3+(4+(4)+1)*5)+6)*2
+/**
+  *Esta es la última expresión a evaluar
+  *Lectura básica
+**/
+
+(1+(2+(3+(4*(4))+5)+6)*2)
+

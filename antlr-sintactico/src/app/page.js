@@ -14,8 +14,8 @@ const HomePage = () => {
   }
 
   const onCompileClick = () =>{
-    const findCommentsRegex = /(\/\/.+)|(\/\*[\s\S]+?\*\/)/gm       // Encontrar comentarios
-    // const findCommentsRegex = /[()]|(\/\/.+)|(\/\*[\s\S]+?\*\/)/gm       // Encontrar comentarios
+    const findCommentsRegex = /(\/\/.+)|(\/\*[\s\S]+?\*\/)|(\/\/)/gm       // Encontrar comentarios
+    // const findCommentsRegex = /[()]|(\/\/.+)|(\/\*[\s\S]+?\*\/)/gm       // Encontrar comentarioscd
     const userInpuntWOComments = inputUser.replace(findCommentsRegex, '')
 
     const rowsExpressions = userInpuntWOComments.match(/([^\n])+/gm)
@@ -27,6 +27,7 @@ const HomePage = () => {
     rowsExpressions.forEach(expression => {
       // console.log(expression)
       let expresionTempRes = analizadorSintactico(expression)
+      console.log(expresionTempRes[expresionTempRes.length-1])
       tempRes.push(' ' + expresionTempRes[expresionTempRes.length-1].toString())
       
     });
