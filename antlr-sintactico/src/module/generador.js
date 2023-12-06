@@ -17,6 +17,7 @@ export function analizadorSintactico(input) {
     const tree = parser.file();
     const visitor = new CustomVisitor();
     let temp = visitor.visitFile(tree);
+
     return temp;
 }
 

@@ -14,7 +14,10 @@ const HomePage = () => {
   }
 
   const onCompileClick = () =>{
-    const rowsExpressions = inputUser.match(/([^\n])+/gm)
+    const findCommentsRegex = /(\/\/.+)|(\/\*[\s\S]+?\*\/)/gm       // Encontrar comentarios
+    const userInpuntWOComments = inputUser.replace(findCommentsRegex, '')
+
+    const rowsExpressions = userInpuntWOComments.match(/([^\n])+/gm)
     const tempRes = []
     let resStr = 'Resultado(s):\n'
 

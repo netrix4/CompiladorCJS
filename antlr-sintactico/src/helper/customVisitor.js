@@ -1,10 +1,5 @@
-//Con el clgXD
 import CalculadoraVisitor from "../grammar/CalculadoraVisitor.js";
 import CalculadoraLexer from "../grammar/CalculadoraLexer.js";
-
-// //Sin el clgXD
-// import CalculadoraVisitor from "../../grammar/src/grammar/CalculadoraVisitor.js";
-// import CalculadoraLexer from "../../grammar/src/grammar/CalculadoraLexer.js";
 
 export default class CustomVisitor extends CalculadoraVisitor {
   results = [];
