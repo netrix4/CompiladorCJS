@@ -9,6 +9,9 @@
 # testing
 /coverage
 
+#Customade no antrlcompiled files
+/grammar/.antlr
+
 # next.js
 /.next/
 /out/

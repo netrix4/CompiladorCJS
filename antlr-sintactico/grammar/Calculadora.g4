@@ -3,6 +3,7 @@ grammar Calculadora;
 file: expr+;          
 
 expr: 
+        
         expr operation=(TIMES|DIV) expr     #timesDiv
         |
         expr operation=(PLUS|MINUS) expr    #plusSubtraction
