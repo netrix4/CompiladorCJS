@@ -13,6 +13,10 @@ export default class CustomVisitor extends CalculadoraVisitor {
 	return this.results
   }
 
+  visitParentesis(ctx) {
+	return this.visit(ctx.expr());
+  }
+
   visitTimesDiv(ctx) {
 	let result
 

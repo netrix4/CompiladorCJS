@@ -12,6 +12,12 @@ export default class CalculadoraVisitor extends antlr4.tree.ParseTreeVisitor {
 	}
 
 
+	// Visit a parse tree produced by CalculadoraParser#parentesis.
+	visitParentesis(ctx) {
+	  return this.visitChildren(ctx);
+	}
+
+
 	// Visit a parse tree produced by CalculadoraParser#timesDiv.
 	visitTimesDiv(ctx) {
 	  return this.visitChildren(ctx);

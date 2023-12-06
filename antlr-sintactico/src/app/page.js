@@ -15,6 +15,7 @@ const HomePage = () => {
 
   const onCompileClick = () =>{
     const findCommentsRegex = /(\/\/.+)|(\/\*[\s\S]+?\*\/)/gm       // Encontrar comentarios
+    // const findCommentsRegex = /[()]|(\/\/.+)|(\/\*[\s\S]+?\*\/)/gm       // Encontrar comentarios
     const userInpuntWOComments = inputUser.replace(findCommentsRegex, '')
 
     const rowsExpressions = userInpuntWOComments.match(/([^\n])+/gm)
@@ -24,6 +25,7 @@ const HomePage = () => {
     console.log('Operaciones identificadas: ' + rowsExpressions.length, rowsExpressions)
 
     rowsExpressions.forEach(expression => {
+      // console.log(expression)
       let expresionTempRes = analizadorSintactico(expression)
       tempRes.push(' ' + expresionTempRes[expresionTempRes.length-1].toString())
       
